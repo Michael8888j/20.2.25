@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +16,17 @@ namespace _20._2._25
             string name = p1.GetProductName();
             string name2 = p2.GetProductName();
             double price1 = p1.GetProductprice();
-            Console.WriteLine($" {name} {name2}");
-            double sum = p1.GetProductprice() + p2.GetProductprice();
-            p1.SetProductPrice(4.0); //הגדרת מחיר
-            Console.WriteLine(price1);
-            p1.UpdatePrice(20); 
-            Console.WriteLine(price1);
+            Product p4 = p1;//אותו מקום בזיכרון
+            Product p5 = new Product(); //עצם ריק
+            p4.SetProductPrice(10);
+            Console.WriteLine("p4>>" + p4.GetProductprice());
+            Console.WriteLine("p1>>" + p4.GetProductprice());
+            //Console.WriteLine($" {name} {name2}");
+            //double sum = p1.GetProductprice() + p2.GetProductprice();
+            //p1.SetProductPrice(4.0); //הגדרת מחיר
+            //Console.WriteLine(price1);
+            //p1.UpdatePrice(20); 
+            //Console.WriteLine(price1);
         }
         class Product
         {
@@ -38,6 +43,17 @@ namespace _20._2._25
             {
                 this.productName = productName;
                 this.category = category;
+            }
+            public Product(Product other) //פעולה בונה מעתיקה
+            {
+                this.productName = other.productName;
+                this.price = other.price;
+                this.category = other.category;
+
+            }
+            public Product() // פעולה בונה ריקע
+            {
+
             }
             public string GetProductName()
             {
@@ -65,6 +81,8 @@ namespace _20._2._25
             {
                 return $"Product name: {productName}," + $"Price: {price}, Category: {category}";
             }
+           
         }
     }
 }
+
